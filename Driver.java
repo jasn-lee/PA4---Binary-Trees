@@ -39,6 +39,7 @@ public class Driver {
 		tree.delete(25);
 		System.out.println(tree);
 		*/
+		System.out.println(tree);
 	}
 	private void doIt2() {
 		ArrayTree tree = new ArrayTree();

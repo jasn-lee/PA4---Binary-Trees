@@ -28,12 +28,15 @@ public class LinkedTree {
 			text += (" " + pointer.replaceAll("\\p{Punct}", "").replaceAll("\\u201C", "")
 			.replaceAll("\\u201D", "").replaceAll("\\u2018", "")
             .replaceAll("\\u2019", "").replaceAll("\\u2122", "")
-            .trim().toLowerCase());
+            .replaceAll("﻿", "").trim().toLowerCase());
 			}
 			}  catch (Exception e) {
 				e.getStackTrace();
 			}
-
+			for (String word : text.split("\\s+")){
+				count++;
+			}
+			System.out.println("words: "+ count);
 			return text;
 		}
 /* 
