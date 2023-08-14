@@ -1,8 +1,44 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.Serializable;
 
 public class LinkedTree {
 
 	private Node root;
 	int count=0;
+
+	public String parse(String filepath) {
+		String text = null;
+		String pointer;
+
+		File file;
+		BufferedReader infile;
+		infile = null;
+
+		try {
+			file = new File (filepath);
+			infile = new BufferedReader(new FileReader(file));
+
+		} catch (Exception e) {
+			e.getStackTrace();
+		}
+		try {
+			while ((pointer = infile.readLine()) != null) {
+			//adding to phrase string
+			text += (" " + pointer.replaceAll("\\p{Punct}", "").replaceAll("\\u201C", "")
+			.replaceAll("\\u201D", "").replaceAll("\\u2018", "")
+            .replaceAll("\\u2019", "").replaceAll("\\u2122", "")
+            .trim().toLowerCase());
+			}
+			}  catch (Exception e) {
+				e.getStackTrace();
+			}
+			return text;
+		}
+	
+
+	
 	
 	public void add(Integer data) {
 		

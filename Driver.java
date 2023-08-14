@@ -4,7 +4,7 @@ public class Driver {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Driver me = new Driver();
-		me.doIt2();
+		me.doIt();
 	}
 	
 	private void doIt() {
@@ -12,6 +12,7 @@ public class Driver {
 		
 		System.out.println(tree);
 		
+		tree.parse("/Users/jasonlee/Downloads/dracula.txt");
 		tree.add(50);
 		tree.add(25);
 		tree.add(80);
