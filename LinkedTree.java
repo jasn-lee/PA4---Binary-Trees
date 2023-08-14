@@ -1,7 +1,6 @@
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.io.Serializable;
 
 public class LinkedTree {
 
@@ -34,65 +33,78 @@ public class LinkedTree {
 			}  catch (Exception e) {
 				e.getStackTrace();
 			}
+
 			return text;
 		}
+/* 
+		public int compareTo(Node emp) {
+			return this.getData().compareTo(emp.getData());
+		 }
 	
-
 	
-	
-	public void add(Integer data) {
-		
-		// If its the first node handle it.
-		if (root == null) {
-			Node newNode = new Node();
-			newNode.setData(data);
-			root = newNode;
-			count = 1;
-			return;
+	public int compareTo(String s) {
+		String word; 
+		if (word == s) {
+			return 0;
+		} else if (word >= s) {
+			return 1;
+		} else {
+			return -1;
 		}
+	}
+	*/
+	public void add(String text) {
+		for (String word : text.split("\\s+")){
+			// If its the first node handle it.
+			if (root == null) {
+				Node newNode = new Node();
+				newNode.setData(word);
+				root = newNode;
+				count = 1;
+				return;
+			}
+			// Otherwise look to see if it already exists
+			Node tmp = internalSearch(word);
 		
-		// Otherwise look to see if it already exists
-		Node tmp = internalSearch(data);
-		
-		if (tmp != null) {
-			// It is already in the tree
-			return;
+			if (tmp != null) {
+				// It is already in the tree
+				return;
+			}
+			// Add it to the tree
+			internalAdd(root, word);
+			
 		}
-		
-		// Add it to the tree
-		internalAdd(root, data);
-		
 	}
 	
-	private void internalAdd(Node root, Integer data) {
+	private void internalAdd(Node root, String word) {
 		if (root == null) {
 			System.out.println("OUCH: Root is null, and that shouldn't happen (internalAdd)");
 			return;
 		}
 		
-		if (data < root.getData()) {
+		if (word.compareTo(root.getData()) == -1) {
 			// recurse down the left side
 			if (root.getlChild() == null) {
 				// This is where we add the data
 				Node newNode = new Node();
-				newNode.setData(data);
+				newNode.setData(word);
 				root.setlChild(newNode);
 				count++;
 				return;
 			} else {
-				internalAdd(root.getlChild(), data);
+				internalAdd(root.getlChild(), word);
 			}
 		} else {
 			// recurse down the right side
 			if (root.getrChild() == null) {
 				// Add the data here
 				Node newNode = new Node();
-				newNode.setData(data);
+				newNode.setData(word);
 				root.setrChild(newNode);
 				count++;
 				return;
 			} else {
-				internalAdd(root.getrChild(), data);
+				internalAdd(root.getrChild(), word);
 			}
 		}
 	}
@@ -101,7 +113,7 @@ public class LinkedTree {
 		return false;
 	}
 	
-	private Node internalSearch(Integer data) {
+	private Node internalSearch(String word) {
 		return null;
 	}
 	

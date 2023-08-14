@@ -9,10 +9,13 @@ public class Driver {
 	
 	private void doIt() {
 		LinkedTree tree = new LinkedTree();
+		String text = null;
 		
 		System.out.println(tree);
 		
-		tree.parse("/Users/jasonlee/Downloads/dracula.txt");
+		text = (tree.parse("/Users/jasonlee/Downloads/dracula.txt"));
+		tree.add(text);
+		/* 
 		tree.add(50);
 		tree.add(25);
 		tree.add(80);
@@ -35,6 +38,7 @@ public class Driver {
 		
 		tree.delete(25);
 		System.out.println(tree);
+		*/
 	}
 	private void doIt2() {
 		ArrayTree tree = new ArrayTree();
