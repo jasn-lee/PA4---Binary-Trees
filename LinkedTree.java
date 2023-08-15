@@ -29,16 +29,17 @@ public class LinkedTree {
 			.replaceAll("\\u201D", "").replaceAll("\\u2018", "")
             .replaceAll("\\u2019", "").replaceAll("\\u2122", "")
             .replaceAll("﻿", "").replaceAll("(?m)^\\s+$", "")
+			.replaceAll("\\p{Sc}", "").replaceAll("[\\p{P}\\p{S}]", "")
 			.trim().toLowerCase());
 			}
 			}  catch (Exception e) {
 				e.getStackTrace();
 			}
 			for (String word : text.split("\\s+")){
-				count++;
+				//count++;
 			}
 			//System.out.println(text);
-			System.out.println("words: "+ count);
+			//System.out.println("words: "+ count);
 			
 			//String s1 = "the";
 			//String s2 = "pro";
@@ -101,6 +102,7 @@ public class LinkedTree {
 				// This is where we add the data
 				Node newNode = new Node();
 				newNode.setData(word);
+				newNode.updateOccurance();
 				root.setlChild(newNode);
 				count++;
 				return;
@@ -109,12 +111,14 @@ public class LinkedTree {
 			}
 		} else if (word.compareTo(root.getData()) == 0) {
 			root.updateOccurance();
+			count++;
 		} else {
 			// recurse down the right side
 			if (root.getrChild() == null) {
 				// Add the data here
 				Node newNode = new Node();
 				newNode.setData(word);
+				newNode.updateOccurance();
 				root.setrChild(newNode);
 				count++;
 				return;
@@ -205,6 +209,7 @@ public class LinkedTree {
 	}
 	
 	public int size() {
+		System.out.println("words: "+ count);
 		return count;
 	}
 	

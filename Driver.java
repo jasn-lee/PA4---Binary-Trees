@@ -40,6 +40,7 @@ public class Driver {
 		System.out.println(tree);
 		*/
 		System.out.println(tree);
+		System.out.println(tree.size());
 	}
 	private void doIt2() {
 		ArrayTree tree = new ArrayTree();
