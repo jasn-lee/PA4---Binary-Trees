@@ -198,7 +198,7 @@ public class LinkedTree {
 		
 		String rtn = "";
 		rtn += toStringInOrderTraversal(root.getlChild());
-		rtn +=  root.getData() + " ";
+		rtn +=  root.getData() + " " + root.getOccurance() + " ";
 		rtn += toStringInOrderTraversal(root.getrChild());
 		
 		return rtn;
