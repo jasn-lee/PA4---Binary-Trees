@@ -11,7 +11,7 @@ public class Driver {
 		LinkedTree tree = new LinkedTree();
 		String text = null;
 		
-		System.out.println(tree);
+		//System.out.println(tree);
 		
 		text = (tree.parse("/Users/jasonlee/Downloads/dracula.txt"));
 		tree.add(text);
@@ -39,7 +39,7 @@ public class Driver {
 		tree.delete(25);
 		System.out.println(tree);
 		*/
-		System.out.println(tree);
+		//System.out.println(tree);
 	}
 	private void doIt2() {
 		ArrayTree tree = new ArrayTree();

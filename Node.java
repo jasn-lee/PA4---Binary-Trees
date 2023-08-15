@@ -4,9 +4,10 @@ import java.io.Serializable;
 
 public class Node implements Serializable {
 	private String data;
-	private Integer occurance;
+	private Integer occurance = 0;
 	private Node lChild;
 	private Node rChild;
+	//occurance = 0;
 	
 	public String getData() {
 		return data;

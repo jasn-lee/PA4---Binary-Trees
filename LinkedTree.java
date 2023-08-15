@@ -37,8 +37,12 @@ public class LinkedTree {
 			for (String word : text.split("\\s+")){
 				count++;
 			}
-			System.out.println(text);
+			//System.out.println(text);
 			System.out.println("words: "+ count);
+			
+			//String s1 = "the";
+			//String s2 = "pro";
+			//System.out.println(s2.compareTo(s1));
 			return text;
 		}
 /* 
@@ -67,17 +71,20 @@ public class LinkedTree {
 					newNode.setData(word);
 					root = newNode;
 					count = 1;
-					return;
-				}
-				// Otherwise look to see if it already exists
-				Node tmp = internalSearch(word);
+					//return;
+				} else {
+					// Otherwise look to see if it already exists
+					//Node tmp = internalSearch(word);
 		
-				if (tmp != null) {
-					// It is already in the tree
-					return;
+					//if (tmp != null) {
+						// It is already in the tree
+						//return;
+					//}
+					// Add it to the tree
+					internalAdd(root, word);
+
 				}
-				// Add it to the tree
-				internalAdd(root, word);
+				
 			}
 		}
 	}
@@ -88,7 +95,7 @@ public class LinkedTree {
 			return;
 		}
 		
-		if (word.compareTo(root.getData()) == -1) {
+		if (word.compareTo(root.getData()) < 0) {
 			// recurse down the left side
 			if (root.getlChild() == null) {
 				// This is where we add the data
@@ -100,6 +107,8 @@ public class LinkedTree {
 			} else {
 				internalAdd(root.getlChild(), word);
 			}
+		} else if (word.compareTo(root.getData()) == 0) {
+			root.updateOccurance();
 		} else {
 			// recurse down the right side
 			if (root.getrChild() == null) {
@@ -180,7 +189,7 @@ public class LinkedTree {
 		System.out.print(root.getData() + " ");
 	}
 	
-	
+	//to do: need to add occurance - fix internal search
 	private String toStringInOrderTraversal(Node root) {
 		// Base Case
 		if (root == null) {
