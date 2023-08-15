@@ -28,7 +28,8 @@ public class LinkedTree {
 			text += (" " + pointer.replaceAll("\\p{Punct}", "").replaceAll("\\u201C", "")
 			.replaceAll("\\u201D", "").replaceAll("\\u2018", "")
             .replaceAll("\\u2019", "").replaceAll("\\u2122", "")
-            .replaceAll("﻿", "").trim().toLowerCase());
+            .replaceAll("﻿", "").replaceAll("(?m)^\\s+$", "")
+			.trim().toLowerCase());
 			}
 			}  catch (Exception e) {
 				e.getStackTrace();
@@ -36,6 +37,7 @@ public class LinkedTree {
 			for (String word : text.split("\\s+")){
 				count++;
 			}
+			System.out.println(text);
 			System.out.println("words: "+ count);
 			return text;
 		}
@@ -58,24 +60,25 @@ public class LinkedTree {
 	*/
 	public void add(String text) {
 		for (String word : text.split("\\s+")){
-			// If its the first node handle it.
-			if (root == null) {
-				Node newNode = new Node();
-				newNode.setData(word);
-				root = newNode;
-				count = 1;
-				return;
-			}
-			// Otherwise look to see if it already exists
-			Node tmp = internalSearch(word);
+			if (!"null".equals(word)) {
+				// If its the first node handle it.
+				if (root == null) {
+					Node newNode = new Node();
+					newNode.setData(word);
+					root = newNode;
+					count = 1;
+					return;
+				}
+				// Otherwise look to see if it already exists
+				Node tmp = internalSearch(word);
 		
-			if (tmp != null) {
-				// It is already in the tree
-				return;
+				if (tmp != null) {
+					// It is already in the tree
+					return;
+				}
+				// Add it to the tree
+				internalAdd(root, word);
 			}
-			// Add it to the tree
-			internalAdd(root, word);
-			
 		}
 	}
 	
