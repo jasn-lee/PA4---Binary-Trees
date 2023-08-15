@@ -42,6 +42,11 @@ public class Driver {
 		System.out.println(tree);
 		System.out.println(tree.size());
 		tree.wordsInText("transylvania");
+		tree.wordsInText("harker");
+		tree.wordsInText("renfield");
+		tree.wordsInText("vampire");
+		tree.wordsInText("expostulate");
+		
 	}
 	private void doIt2() {
 		ArrayTree tree = new ArrayTree();

@@ -133,7 +133,9 @@ public class LinkedTree {
 	}
 
 	public void wordsInText(String word) {
+		//Integer result = null;
 		internalSearch(root, word);
+		//System.out.println((word + " occurs " + result + " times"));
 	}
 	
 	private void internalSearch(Node root, String word) {
@@ -151,7 +153,8 @@ public class LinkedTree {
 				internalSearch(root.getlChild(), word);
 			}
 		} else if (word.compareTo(root.getData()) == 0) {
-			System.out.println((root.getData() + root.getOccurance()));
+			System.out.println((root.getData() + " occurs " + root.getOccurance() + " times"));
+			
 			return;
 		} else {
 			// recurse down the right side
