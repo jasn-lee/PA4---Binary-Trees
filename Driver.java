@@ -41,6 +41,7 @@ public class Driver {
 		*/
 		System.out.println(tree);
 		System.out.println(tree.size());
+		tree.wordsInText("transylvania");
 	}
 	private void doIt2() {
 		ArrayTree tree = new ArrayTree();

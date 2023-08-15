@@ -131,9 +131,37 @@ public class LinkedTree {
 	public boolean remove(Integer data) {
 		return false;
 	}
+
+	public void wordsInText(String word) {
+		internalSearch(root, word);
+	}
 	
-	private Node internalSearch(String word) {
-		return null;
+	private void internalSearch(Node root, String word) {
+		if (root == null) {
+			System.out.println("OUCH: Root is null, and that shouldn't happen (internalAdd)");
+			return;
+		}
+		
+		if (word.compareTo(root.getData()) < 0) {
+			// recurse down the left side
+			if (root.getlChild() == null) {
+				internalSearch(root.getrChild(), word);
+				
+			} else {
+				internalSearch(root.getlChild(), word);
+			}
+		} else if (word.compareTo(root.getData()) == 0) {
+			System.out.println((root.getData() + root.getOccurance()));
+			return;
+		} else {
+			// recurse down the right side
+			if (root.getrChild() == null) {
+				internalSearch(root.getlChild(), word);
+			} else {
+				internalSearch(root.getrChild(), word);
+			}
+		}
+		return;
 	}
 	
 	public boolean search(Integer data) {
