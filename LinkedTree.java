@@ -5,7 +5,8 @@ import java.io.FileReader;
 public class LinkedTree {
 
 	private Node root;
-	int count=0;
+	int wordCount = 0;
+	int nodeCount = 0;
 
 	public String parse(String filepath) {
 		String text = null;
@@ -71,7 +72,8 @@ public class LinkedTree {
 					Node newNode = new Node();
 					newNode.setData(word);
 					root = newNode;
-					count = 1;
+					//wordCount = 1;
+					//nodeCount++;
 					//return;
 				} else {
 					// Otherwise look to see if it already exists
@@ -104,14 +106,15 @@ public class LinkedTree {
 				newNode.setData(word);
 				newNode.updateOccurance();
 				root.setlChild(newNode);
-				count++;
+				wordCount++;
+				nodeCount++;
 				return;
 			} else {
 				internalAdd(root.getlChild(), word);
 			}
 		} else if (word.compareTo(root.getData()) == 0) {
 			root.updateOccurance();
-			count++;
+			wordCount++;
 		} else {
 			// recurse down the right side
 			if (root.getrChild() == null) {
@@ -120,7 +123,8 @@ public class LinkedTree {
 				newNode.setData(word);
 				newNode.updateOccurance();
 				root.setrChild(newNode);
-				count++;
+				wordCount++;
+				nodeCount++;
 				return;
 			} else {
 				internalAdd(root.getrChild(), word);
@@ -130,6 +134,10 @@ public class LinkedTree {
 	
 	public boolean remove(Integer data) {
 		return false;
+	}
+
+	public Integer differentWords() {
+		return nodeCount;
 	}
 
 	public void wordsInText(String word) {
@@ -240,8 +248,8 @@ public class LinkedTree {
 	}
 	
 	public int size() {
-		System.out.println("words: "+ count);
-		return count;
+		System.out.println("words: "+ wordCount);
+		return wordCount;
 	}
 	
 	public int maxDepth() {
@@ -251,7 +259,7 @@ public class LinkedTree {
 
 	private int maxDepth(Node root, int depth) {
 		if (root == null) {
-			return depth-1;
+			return depth - 1;
 		}
 		
 		//depth++;
@@ -273,7 +281,7 @@ public class LinkedTree {
 		
 		// If the size of the tree changed, we deleted something
 		if (size != size()) {
-			count = size-1;
+			wordCount = size-1;
 		}
 		
 		System.out.println("Delete recursed " + delCount + " times");
@@ -294,7 +302,7 @@ public class LinkedTree {
 			root.setrChild(recDelete(root.getrChild(), data));
 		} else {
 			// If the data is the same, delete this node
-			count--;
+			wordCount--;
 			// see if node has one child or no children
 			if (root.getlChild() == null) {
 				return root.getrChild();
