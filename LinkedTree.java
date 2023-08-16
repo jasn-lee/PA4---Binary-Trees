@@ -101,7 +101,6 @@ public class LinkedTree {
 ///          total word count.
 	private void internalAdd(Node root, String word) {
 		if (root == null) {
-			System.out.println("OUCH: Root is null, and that shouldn't happen (internalAdd)");
 			return;
 		}
 		

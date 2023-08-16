@@ -1,7 +1,7 @@
 //Class:  Node
 //
 // Description:
-// Defines Instance Vraiables for Tree Node's data(words) and the occurances each word has, 
+// Defines Instance Variables for Tree Node's data(words) and the occurances each word has, 
 // and their Right and Left children
 //
 // Author: Jason Lee

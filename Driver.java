@@ -1,6 +1,6 @@
 //------------------------------------------------------------------------------------------------------------------------
 // Driver
-// Parses through Oscar Wilde’s The Picture of Dorian Gray, then maps all words to lower case and removes all
+// Parses through "Dracula", and maps all words to lower case and removes all
 // punctuation characters, then inserts them into a Linked List for information on the text.
 //
 // Author: Jason Lee
@@ -10,7 +10,7 @@
 //
 // Description:
 // This program parses through a .txt file in the user's local storage, and processes it so that 
-// only lowercase letters and numbers remain. It sprts through each word and adds it into nodes of
+// only lowercase letters and numbers remain. It sorts through each word and adds it into nodes of
 // a Binary Tree in alphabetical order. An occurance count exists in each node for duplicate words.
 //
 // Assumptions:
@@ -21,7 +21,6 @@
 public class Driver {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		Driver me = new Driver();
 		me.doIt();
 	}
