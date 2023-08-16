@@ -1,3 +1,23 @@
+//------------------------------------------------------------------------------------------------------------------------
+// Driver
+// Parses through Oscar Wilde’s The Picture of Dorian Gray, then maps all words to lower case and removes all
+// punctuation characters, then inserts them into a Linked List for information on the text.
+//
+// Author: Jason Lee
+// Date: 07/18/23
+// Class: MET CS342
+// Issues: 
+//
+// Description:
+// This program parses through a .txt file in the user's local storage, and processes it so that 
+// only lowercase letters and numbers remain. It concatonates it all into a string (book), and uses that 
+// string (book) to call methods inside the LinkedList class and inserst them into a linked list. It 
+// has the ability to search for specific words, and return the count for those words. 
+//
+// Assumptions:
+// The user will replace the file path name on Line 69 in the LinkedList.java file, with the file path of 
+// their own Dorian Gray text file. 
+//------------------------------------------------------------------------------------------------------------------------
 
 public class Driver {
 
@@ -51,7 +71,7 @@ public class Driver {
 		System.out.println("Word at root is : " + tree.whatIsRoot());
 		System.out.println("Total word count : " + tree.totalWordCount());
 		tree.mostFrequent();
-		tree.maxDepthWord();
+		//tree.maxDepthWord();
 		tree.preOrderTraversal();
 		tree.inOrderTraversal();
 		tree.postOrderTraversal();

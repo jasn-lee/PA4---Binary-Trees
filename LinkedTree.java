@@ -11,17 +11,21 @@ public class LinkedTree {
 	public boolean maxChildLR = true;
 	public boolean found = false;
 
+	//variables for finding the most Frequent Word in text
 	Integer frequentCount = 0;
 	String frequentWord = null;
 
+	//variables for Pre-Order, In-Order, Post-Order Traversals
 	String preOrder = "";
 	String inOrder = "";
 	String postOrder = "";
 
 	String children = "";
-	// int [] storage;
-	// storage = new int[100];
-	// int storageIndex = 0;
+
+	//Depth of Tree
+	int depth = 0;
+	int maxDepth = 0;
+
 	
 
 	public String parse(String filepath) {
@@ -292,8 +296,10 @@ public class LinkedTree {
 	}
 	
 	public int maxDepth() {
-		int depth = 0;
-		return maxDepth(root, depth);
+		depth = maxDepth(root, depth);
+		maxDepth = depth;
+		
+		return maxDepth;
 	}
 
 	private int maxDepth(Node root, int depth) {
@@ -310,32 +316,52 @@ public class LinkedTree {
 		int rcd = maxDepth(root.getrChild(), depth+1);
 		if (lcd > rcd) {
 			//boolean maxChildLR = true;
-			if (lcd == 32) {
-				System.out.println("YOOOOY");
-			}
+
+
 			return lcd;
 		} else {
 			//boolean maxChildLR = false;
-			if (rcd == 32) {
-				
-				System.out.println(root.getData());
-				children += (root.getData() + " ");
-				
-			}
 			return rcd;			
 		}
 		
 	}
-
-	public void maxDepthWord() {
-		//int depth = 0;
-			for (String leaf : children.split("\\s+")) {
-				System.out.println("Deepest word(s) is/are : " + leaf);
-				break;
-		}
+///////////////////////////////////////////////////////////
+	// public void maxDepthWord() {
+	// 	int initialDepth = 0;
+	// 	maxDepthWordFind(root, initialDepth);
+	// 		for (String leaf : children.split("\\s+")) {
+	// 			System.out.println("Deepest word(s) is/are : " + leaf);
+	// 			//break;
+	// 	}
+	// }
+	// private int maxDepthWordFind(Node root, int initialDepth) {
+	// 	if (root == null) {
+	// 		return (initialDepth - 1);
+	// 	}
 		
-	}
+	// 	//depth++;
+	// 	int left = maxDepth(root.getlChild(), initialDepth+1);
+	// 	int right = maxDepth(root.getrChild(), initialDepth+1);
+	// 	if (left > right) {
+	// 		//boolean maxChildLR = true;
+	// 		// if (lcd == depth) {
+	// 		// 	System.out.println(root.getData());
+	// 		// 	children += (root.getData() + " ");
+	// 		// }
+	// 		return left;
+	// 	} else {
+	// 		//boolean maxChildLR = false;
+	// 		if (right == maxDepth) {
+				
+	// 			System.out.println(root.getData());
+	// 			children += (root.getData() + " ");
+				
+	// 		}
+	// 		return right;			
+	// 	}
 
+	// }
+///////////////////////////////////////////////////////////
 	public int totalWordCount() {
 		return (wordCount);
 	}
@@ -362,30 +388,6 @@ public class LinkedTree {
 		
 
 	}
-
-	// private String maxDepthWord(Node root) {
-		
-		
-	// 	//depth++;
-	// 	if (maxChildLR == true) {
-	// 		if ((root.getrChild() == null) || (root.getlChild() == null)) {
-	// 			return root.getData();
-	// 		}
-	// 		String lcd = maxDepthWord(root.getlChild());
-	// 		String rcd = maxDepthWord(root.getrChild());
-	// 		return lcd;
-	// 	} else {
-	// 		if ((root.getrChild() == null) || (root.getlChild() == null)) {
-	// 			return root.getData();
-	// 		}
-	// 		String lcd = maxDepthWord(root.getlChild());
-	// 		String rcd = maxDepthWord(root.getrChild());
-			
-	// 		return rcd;
-
-	// 	}
-		
-	// }
 	
 	private int delCount = 0;
 	public void delete(Integer data) {
