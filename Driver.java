@@ -48,6 +48,15 @@ public class Driver {
 		tree.wordsInText("expostulate");
 		System.out.println("Tree is : " + tree.maxDepth() + " nodes deep");
 		System.out.println("Tree contains : " + tree.differentWords() + " distinct words");
+		System.out.println("Word at root is : " + tree.whatIsRoot());
+		System.out.println("Total word count : " + tree.totalWordCount());
+		tree.mostFrequent();
+		tree.maxDepthWord();
+		tree.preOrderTraversal();
+		tree.inOrderTraversal();
+		tree.postOrderTraversal();
+
+		
 		
 	}
 	private void doIt2() {
